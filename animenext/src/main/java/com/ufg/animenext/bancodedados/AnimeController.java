@@ -52,7 +52,7 @@ public class AnimeController extends HttpServlet {
                 AnimeDao.excluir(codigo);
                 msg = "Exclusão realizada com sucesso.";
             } else if (op.equals("")) {
-                msg = "";
+                msg = "Em construção";
             } else {
                 throw new IllegalArgumentException("Operação \"" + op + "\" não suportada.");
             }
@@ -62,4 +62,5 @@ public class AnimeController extends HttpServlet {
             e.printStackTrace(resp.getWriter());
         }
     }
+    
 }
