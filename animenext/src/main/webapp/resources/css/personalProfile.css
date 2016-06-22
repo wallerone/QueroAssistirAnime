@@ -1,0 +1,37 @@
+.divLogin{
+	width:300px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10%;
+}
+
+.bodyLogin{
+	background-color:#87CEFA;
+}
+.divBtnEntrar{
+	text-align:center;
+	width:100%;
+	margin-top:10px;
+}
+.barraLadoEsquerdo{
+	position:absolute;
+	top:50px;
+	float:left;
+	width:15%;
+}
+.corpoDireito{
+	top:50px;
+	position:absolute;
+	float:right;
+	width:85%;
+}
+.menuEsquerdo{
+	width:100%;
+}
+.imagemPerfil{
+	width:inherit;
+}
+main{
+	float:right;
+	width :85%;
+}
