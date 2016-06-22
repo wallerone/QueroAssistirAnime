@@ -1,4 +1,4 @@
---jdbc:derby:db;create=true
+--jdbc:derby:dbanime;create=true
 --Tabela usada para realização do projeto AnimeNext, assim como os comandos sql utilizados...
 
 create table anime(
