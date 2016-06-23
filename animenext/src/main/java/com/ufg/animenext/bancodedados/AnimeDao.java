@@ -8,7 +8,9 @@ package com.ufg.animenext.bancodedados;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -68,5 +70,36 @@ public class AnimeDao {
         pstmt.close();
         // Fechar conexão.
         conn.close();
+    }
+    
+    public static ArrayList<ListaAnime> Listagem() throws SQLException {
+        // Abrir uma conexão com o banco de dados.
+        Connection conn = DriverManager.getConnection(URL);
+        // Executar instrução SQL.
+        String sql = "select codigo, titulo, genero, lancamento, direcao, temporada from anime";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        //Executa a consulta. 
+        ResultSet rs = pstmt.executeQuery();
+        // Percorrer resultados.
+        ArrayList<ListaAnime> listar = new ArrayList<ListaAnime>();
+        while (rs.next()) {
+            int codigo = rs.getInt("codigo");
+            String titulo = rs.getString("titulo");
+            String genero = rs.getString("genero");
+            String lancamento = rs.getString("lancamento");
+            String direcao = rs.getString("direcao");
+            int temporada = rs.getInt("temporada");
+            
+            ListaAnime lista = new ListaAnime(codigo, titulo, genero, lancamento, direcao, temporada);
+            listar.add(lista);
+        }
+        // Fechar resultado.
+        rs.close();
+        // Fechar sentença.
+        pstmt.close();
+        // Fechar conexão.
+        conn.close();
+        
+        return listar;
     }
 }

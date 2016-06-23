@@ -57,6 +57,8 @@ public class AnimeController extends HttpServlet {
                 throw new IllegalArgumentException("Operação \"" + op + "\" não suportada.");
             }
             req.setAttribute("msg", msg);
+            req.setAttribute("listar", AnimeDao.Listagem());
+            
             req.getRequestDispatcher("animeView.jsp").forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace(resp.getWriter());

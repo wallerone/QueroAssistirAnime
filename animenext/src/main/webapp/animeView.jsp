@@ -4,6 +4,8 @@
     Author     : Wallace
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ufg.animenext.bancodedados.ListaAnime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -95,10 +97,36 @@
                                     <button name="operacao" value="incluir" class="btn btn-default btn-lg">Incluir</button>
                                     <button name="operacao" value="excluir" class="btn btn-default btn-lg">Excluir</button>
                                     <button name="operacao" value="alterar" class="btn btn-default btn-lg">Alterar</button>
-                                    <button name="operacao" value="listar" class="btn btn-default btn-lg">Listar</button>
                                 </ul>
                             </form>
                             <b>${msg}</b>
+                            <!-- LISTA DE OBJETOS CRIADOS -->
+                            <hr>
+                            <table border="1" class="container">
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Título</th>
+                                    <th>Gênero</th>
+                                    <th>Lançamento</th>
+                                    <th>Direção</th>
+                                    <th>Temporada</th>
+                                </tr>
+
+                                <%
+                                    ArrayList<ListaAnime> listar = (ArrayList<ListaAnime>) request.getAttribute("listar");
+                                    for (ListaAnime lista : listar) {
+                                %>
+                                <tr>
+                                    <td><%=lista.getCodigo()%></td>
+                                    <td><%=lista.getTitulo()%></td>
+                                    <td><%=lista.getGenero()%></td>
+                                    <td><%=lista.getLancamento()%></td>
+                                    <td><%=lista.getDirecao()%></td>
+                                    <td><%=lista.getTemporada()%></td>
+                                </tr>
+                                <%}%>
+                            </table>
+
 
                         </div>
                     </div>
